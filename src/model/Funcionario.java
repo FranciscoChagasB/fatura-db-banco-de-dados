@@ -1,8 +1,12 @@
 package model;
 
+import DAO.PessoaDAO;
+
 public class Funcionario extends GenericModel {
     private String codigo_funcional;
     private Integer id_pessoa;
+    
+    static PessoaDAO pessoaDAO = new PessoaDAO();
 
     public Funcionario(String codigo_funcional, Integer id_pessoa) {
         this.codigo_funcional = codigo_funcional;
@@ -27,16 +31,12 @@ public class Funcionario extends GenericModel {
         return id_pessoa;
     }
 
-    public void setIdPessoa(Integer id_pessoa) {
-        this.id_pessoa = id_pessoa;
-    }
-
     @Override
     public String toString() {
         return "Funcionario{" +
                 "id='" + this.getId() + '\'' +
                 ", codigo_funcional='" + codigo_funcional + '\'' +
-                ", id_pessoa='" + id_pessoa + '\'' +
+                ", id_pessoa='" + pessoaDAO.selectPessoa(id_pessoa) + '\'' +
                 '}';
     }
 }

@@ -1,9 +1,12 @@
 package model;
+import DAO.*;
 
 public class Cliente extends GenericModel {
     private String num_documento;
     private String num_cliente;
     private Integer id_pessoa;
+    
+    static PessoaDAO pessoaDAO = new PessoaDAO();
 
     public Cliente(String num_documento, String num_cliente, Integer id_pessoa) {
         this.num_documento = num_documento;
@@ -38,17 +41,13 @@ public class Cliente extends GenericModel {
         return id_pessoa;
     }
 
-    public void setIdPessoa(Integer id_pessoa) {
-        this.id_pessoa = id_pessoa;
-    }
-
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "Cliente {" +
                 "id='" + this.getId() + '\'' +
                 ", num_documento='" + num_documento + '\'' +
                 ", num_cliente='" + num_cliente + '\'' +
-                ", id_pessoa='" + id_pessoa + '\'' +
+                ", id_pessoa='" + pessoaDAO.selectPessoa(id_pessoa) + '\'' +
                 '}';
     }
 }

@@ -2,7 +2,6 @@ package DAO;
 
 import java.sql.*;
 
-
 public class ConexaoDB {
     //TODO: criar variáveis de ambiente para os dados de acesso ao banco.
     private static final String dbName = "francisco_20212045050380db";
