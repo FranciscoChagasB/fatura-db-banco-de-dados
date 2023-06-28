@@ -25,7 +25,7 @@ public class TipoFase extends GenericModel {
     public String toString() {
         return "TipoFase {" +
                 "id='" + this.getId() + "\'" +
-                "descricao='" + descricao + "\'" +
+                "descricao='" + getDescricao() + "\'" +
                 '}';
     }
 }

@@ -9,11 +9,11 @@ public class Tarifa extends GenericModel{
 	private String data_inicio;
 	private String data_fim;
 	private String aliquota_ICMS;
-	private Integer id_classe;
+	private Classe id_classe;
 	
 	static ClasseDAO classeDAO = new ClasseDAO();
 	
-	public Tarifa(String taxa, String lei, String data_inicio, String data_fim, String aliquota_ICMS, Integer id_classe) {
+	public Tarifa(String taxa, String lei, String data_inicio, String data_fim, String aliquota_ICMS, Classe id_classe) {
         this.taxa = taxa;
         this.lei = lei;
         this.data_inicio = data_inicio;
@@ -22,7 +22,7 @@ public class Tarifa extends GenericModel{
         this.id_classe = id_classe;
     }
     
-    public Tarifa(Integer id, String taxa, String lei, String data_inicio, String data_fim, String aliquota_ICMS, Integer id_classe) {
+    public Tarifa(Integer id, String taxa, String lei, String data_inicio, String data_fim, String aliquota_ICMS, Classe id_classe) {
     	this.taxa = taxa;
         this.lei = lei;
         this.data_inicio = data_inicio;
@@ -73,7 +73,7 @@ public class Tarifa extends GenericModel{
     }
     
     public int getIdClasse() {
-    	return id_classe;
+    	return id_classe.getId();
     }
     
     @Override
@@ -85,7 +85,7 @@ public class Tarifa extends GenericModel{
                 ", data_inicio='" + data_inicio + "\'" +
                 ", data_fim='" + data_fim + "\'" +
                 ", aliquota_ICMS='" + aliquota_ICMS + "\'" +
-                ", id_classe='" + classeDAO.selectClasse(id_classe) + "\'" +
+                ", id_classe='" + getIdClasse() + "\'" +
                 '}';
     }
 	

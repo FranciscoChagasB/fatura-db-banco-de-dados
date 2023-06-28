@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class ConexaoDB {
     //TODO: criar variáveis de ambiente para os dados de acesso ao banco.
-    private static final String dbName = "francisco_20212045050380db";
-    private static final String dbURL = "jdbc:postgresql://200.17.32.221:5432/";
+    private static final String dbName = "postgres";
+    private static final String dbURL = "jdbc:postgresql://localhost:5432/";
     private static final String username = "postgres";
-    private static final String password = "postgres";
+    private static final String password = "admin";
 
     public static Connection conexaoDB() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");

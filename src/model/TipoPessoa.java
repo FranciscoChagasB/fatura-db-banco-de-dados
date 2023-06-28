@@ -25,7 +25,7 @@ public class TipoPessoa extends GenericModel{
     public String toString() {
         return "TipoPessoa {" +
                 "id='" + this.getId() + "\'" +
-                "descricao='" + descricao + "\'" +
+                "descricao='" + getDescricao() + "\'" +
                 '}';
     }
 	
