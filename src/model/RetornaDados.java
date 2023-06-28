@@ -45,13 +45,13 @@ public class RetornaDados extends GenericModel{
 	
     @Override
     public String toString() {
-        return "DataClien{ \n" +
-                " \tposte=" + getPoste() + "\n" +
-                " \tnome=" + getNome() + "\n" +
-                " \tcnpj=" + getCnpj() + "\n" +
-                " \tclasse=" + getClasse() + "\n" +
-                " \ttipoFase=" + getTipoFase() + "\n" +
-                " \tcpf=" + getCpf() + "\n" +
+        return "Dados Cliente{ \n" +
+                "poste=" + getPoste() + "\n" +
+                "nome=" + getNome() + "\n" +
+                "cnpj=" + getCnpj() + "\n" +
+                "classe=" + getClasse() + "\n" +
+                "tipoFase=" + getTipoFase() + "\n" +
+                "cpf=" + getCpf() + "\n" +
                 '}';
     }
 	
