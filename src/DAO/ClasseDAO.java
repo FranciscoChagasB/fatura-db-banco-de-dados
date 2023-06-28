@@ -39,7 +39,7 @@ public class ClasseDAO extends  ConexaoDB{
 
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
-                int tipo_fase_id = rs.getInt("tipo_fase_id");
+                int tipo_fase_id = rs.getInt("id_tipo_fase");
                 TipoFase tipo_fase = tipofaseDAO.selectTipoFaseById(tipo_fase_id);
                 entidade = new Classe(id, descricao, tipo_fase);
             }
@@ -59,7 +59,7 @@ public class ClasseDAO extends  ConexaoDB{
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                int tipo_fase_id = rs.getInt("tipo_fase_id");
+                int tipo_fase_id = rs.getInt("id_tipo_fase");
                 TipoFase tipo_fase = tipofaseDAO.selectTipoFaseById(tipo_fase_id);
                 entidades.add(new Classe(id, descricao, tipo_fase));
             }

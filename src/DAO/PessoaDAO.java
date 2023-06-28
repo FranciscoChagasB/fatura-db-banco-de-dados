@@ -50,7 +50,7 @@ public class PessoaDAO extends  ConexaoDB{
             while (rs.next()) {
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
-                Integer tipo_pessoa_id = rs.getInt("tipo_pessoa_id");
+                Integer tipo_pessoa_id = rs.getInt("id_tipo_pessoa");
                 TipoPessoa tipo_pessoa = tipoPessoaDao.selectTipoPessoaById(tipo_pessoa_id);
                 entidade = new Pessoa(id, nome, cpf, tipo_pessoa);
             }
@@ -71,7 +71,7 @@ public class PessoaDAO extends  ConexaoDB{
                 Integer id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
-                Integer tipo_pessoa_id = rs.getInt("tipo_pessoa_id");
+                Integer tipo_pessoa_id = rs.getInt("id_tipo_pessoa");
                 TipoPessoa tipo_pessoa = tipoPessoaDao.selectTipoPessoaById(tipo_pessoa_id);
                 entidades.add(new Pessoa(id, nome, cpf, tipo_pessoa));
             }

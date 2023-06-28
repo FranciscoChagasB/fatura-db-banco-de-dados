@@ -22,11 +22,11 @@ public class TarifaDAO extends  ConexaoDB{
     public void insertTarifa(Tarifa entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_TARIFA_SQL)) {
             preparedStatement.setString(1, entidade.getTaxa());
-            preparedStatement.setInt(2, entidade.getClasseId());
-            preparedStatement.setString(3, entidade.getLei());
-            preparedStatement.setString(4, entidade.getDataInicio());
-            preparedStatement.setString(5, entidade.getDataFim());
-            preparedStatement.setString(6, entidade.getAliquotaICMS());
+            preparedStatement.setString(2, entidade.getLei());
+            preparedStatement.setString(3, entidade.getDataInicio());
+            preparedStatement.setString(4, entidade.getDataFim());
+            preparedStatement.setString(5, entidade.getAliquotaICMS());
+            preparedStatement.setInt(6, entidade.getClasseId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             printSQLException(e);
@@ -43,13 +43,13 @@ public class TarifaDAO extends  ConexaoDB{
 
             while (rs.next()) {
                 String taxa = rs.getString("taxa");
-                int classe_id = rs.getInt("classe_id");
+                int classe_id = rs.getInt("id_classe");
                 Classe classe = classeDAO.selectClasseById(classe_id);
                 String lei = rs.getString("lei");
                 String data_inicio = rs.getString("data_inicio");
                 String data_final = rs.getString("data_final");
-                String aliquota_icms = rs.getString("aliquota_icms");
-                entidade = new Tarifa(id, taxa, classe, lei, data_inicio, data_final, aliquota_icms);
+                String aliquota_icms = rs.getString("aliquota_icms");     
+                entidade = new Tarifa(id, taxa, lei, data_inicio, data_final, aliquota_icms, classe);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -66,14 +66,14 @@ public class TarifaDAO extends  ConexaoDB{
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String taxa = rs.getString("taxa");
-                int classe_id = rs.getInt("classe_id");
+                String taxa = rs.getString("taxa"); 
+                int classe_id = rs.getInt("id_classe");
                 Classe classe = classeDAO.selectClasseById(classe_id);
                 String lei = rs.getString("lei");
                 String data_inicio = rs.getString("data_inicio");
                 String data_final = rs.getString("data_final");
-                String aliquota_icms = rs.getString("aliquota_icms");
-                entidades.add(new Tarifa(id, taxa, classe, lei, data_inicio, data_final, aliquota_icms));
+                String aliquota_icms = rs.getString("aliquota_icms");        
+                entidades.add(new Tarifa(id, taxa, lei, data_inicio, data_final, aliquota_icms, classe));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -94,12 +94,12 @@ public class TarifaDAO extends  ConexaoDB{
 
     public boolean updateTarifa(Tarifa entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_TARIFA_SQL)) {
-            statement.setString(1, entidade.getTaxa());
-            statement.setInt(2, entidade.getClasseId());
-            statement.setString(3, entidade.getLei());
-            statement.setString(4, entidade.getDataInicio());
-            statement.setString(5, entidade.getDataFim());
-            statement.setString(6, entidade.getAliquotaICMS());
+            statement.setString(1, entidade.getTaxa());  
+            statement.setString(2, entidade.getLei());
+            statement.setString(3, entidade.getDataInicio());
+            statement.setString(4, entidade.getDataFim());
+            statement.setString(5, entidade.getAliquotaICMS());
+            statement.setInt(6, entidade.getClasseId());
             statement.setInt(7, entidade.getId());
 
             return statement.executeUpdate() > 0;

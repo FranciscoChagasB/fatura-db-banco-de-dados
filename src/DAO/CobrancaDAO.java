@@ -44,9 +44,9 @@ public class CobrancaDAO extends ConexaoDB {
             while (rs.next()) {
                 String mes_referencia = rs.getString("mes_referencia");
                 String ano_referencia = rs.getString("ano_referencia");
-                int tarifa_id = rs.getInt("tarifa_id");
+                int tarifa_id = rs.getInt("id_tarifa");
                 Tarifa tarifa = tarifaDAO.selectTarifaById(tarifa_id);
-                int medicao_id = rs.getInt("medicao_id");
+                int medicao_id = rs.getInt("id_medicao");
                 Medicao medicao = medicaoDAO.selectMedicaoById(medicao_id);
                 entidade = new Cobranca(id, mes_referencia, ano_referencia, tarifa, medicao);
             }
@@ -67,9 +67,9 @@ public class CobrancaDAO extends ConexaoDB {
                 int id = rs.getInt("id");
                 String mes_referencia = rs.getString("mes_referencia");
                 String ano_referencia = rs.getString("ano_referencia");
-                int tarifa_id = rs.getInt("tarifa_id");
+                int tarifa_id = rs.getInt("id_tarifa");
                 Tarifa tarifa = tarifaDAO.selectTarifaById(tarifa_id);
-                int medicao_id = rs.getInt("medicao_id");
+                int medicao_id = rs.getInt("id_medicao");
                 Medicao medicao = medicaoDAO.selectMedicaoById(medicao_id);
                 entidades.add(new Cobranca(id, mes_referencia, ano_referencia, tarifa, medicao));
             }

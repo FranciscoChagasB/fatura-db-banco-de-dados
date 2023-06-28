@@ -40,7 +40,7 @@ public class FuncionarioDAO extends ConexaoDB{
 
             while (rs.next()) {
                 String codigoFuncional = rs.getString("codigo_funcional");
-                int pessoa_id = rs.getInt("pessoa_id");
+                int pessoa_id = rs.getInt("id_pessoa");
                 Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
                 entidade = new Funcionario(id, codigoFuncional, pessoa );
             }
@@ -60,7 +60,7 @@ public class FuncionarioDAO extends ConexaoDB{
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String codigoFuncional = rs.getString("codigo_funcional");
-                int pessoa_id = rs.getInt("pessoa_id");
+                int pessoa_id = rs.getInt("id_pessoa");
                 Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
                 entidades.add(new Funcionario(id, codigoFuncional, pessoa));
             }

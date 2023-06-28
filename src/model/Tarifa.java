@@ -8,7 +8,7 @@ public class Tarifa extends GenericModel{
 	private String lei;
 	private String data_inicio;
 	private String data_fim;
-	private String aliquota_ICMS;
+	private String aliquota_icms;
 	private Classe id_classe;
 	
 	static ClasseDAO classeDAO = new ClasseDAO();
@@ -18,7 +18,7 @@ public class Tarifa extends GenericModel{
         this.lei = lei;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
-        this.aliquota_ICMS = aliquota_ICMS;
+        this.aliquota_icms = aliquota_ICMS;
         this.id_classe = id_classe;
     }
     
@@ -27,7 +27,7 @@ public class Tarifa extends GenericModel{
         this.lei = lei;
         this.data_inicio = data_inicio;
         this.data_fim = data_fim;
-        this.aliquota_ICMS = aliquota_ICMS;
+        this.aliquota_icms = aliquota_ICMS;
         this.id_classe = id_classe;
         super.setId(id);
     }
@@ -65,14 +65,14 @@ public class Tarifa extends GenericModel{
     }
     
     public String getAliquotaICMS() {
-    	return aliquota_ICMS;
+    	return aliquota_icms;
     }
     
     public void setAliquotaICMS(String aliquota_ICMS) {
-        this.aliquota_ICMS = aliquota_ICMS;
+        this.aliquota_icms = aliquota_ICMS;
     }
     
-    public int getIdClasse() {
+    public int getClasseId() {
     	return id_classe.getId();
     }
     
@@ -80,12 +80,12 @@ public class Tarifa extends GenericModel{
     public String toString() {
         return "Tarifa {" +
                 "id='" + this.getId() + "\'" +
-                ", taxa='" + taxa + "\'" +
-                ", lei='" + lei + "\'" +
-                ", data_inicio='" + data_inicio + "\'" +
-                ", data_fim='" + data_fim + "\'" +
-                ", aliquota_ICMS='" + aliquota_ICMS + "\'" +
-                ", id_classe='" + getIdClasse() + "\'" +
+                ", taxa='" + getTaxa() + "\'" +
+                ", lei='" + getLei() + "\'" +
+                ", data_inicio='" + getDataInicio() + "\'" +
+                ", data_fim='" + getDataFim() + "\'" +
+                ", aliquota_icms='" + getAliquotaICMS() + "\'" +
+                ", id_classe='" + getClasseId() + "\'" +
                 '}';
     }
 	

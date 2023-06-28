@@ -41,7 +41,7 @@ public class ClienteDAO extends  ConexaoDB{
             while (rs.next()) {
                 String num_documento = rs.getString("num_documento");
                 String num_cliente = rs.getString("num_cliente");
-                int pessoa_id = rs.getInt("pessoa_id");
+                int pessoa_id = rs.getInt("id_pessoa");
                 Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
                 entidade = new Cliente(id, num_cliente, num_documento, pessoa);
             }
@@ -62,7 +62,7 @@ public class ClienteDAO extends  ConexaoDB{
                 Integer id = rs.getInt("id");
                 String num_documento = rs.getString("num_documento");
                 String num_cliente = rs.getString("num_cliente");
-                int pessoa_id = rs.getInt("pessoa_id");
+                int pessoa_id = rs.getInt("id_pessoa");
                 Pessoa pessoa = pessoaDAO.selectPessoaById(pessoa_id);
                 entidades.add(new Cliente(id, num_documento, num_cliente, pessoa));
             }

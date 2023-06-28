@@ -4,38 +4,38 @@ import java.sql.Timestamp;
 
 import DAO.*;
 
-public class TarefaRota extends GenericModel{
+public class TarefaRota extends  GenericModel {
+	
+    private String observacao;
+    private Timestamp data_inicio;
+    private Timestamp data_fim;
+    private Rota rotaId;
 
-	private String observacao;
-	private Timestamp data_inicio;
-	private Timestamp data_fim;
-    private Integer id_rota;
-    
     static RotaDAO rotaDAO = new RotaDAO();
 
-    public TarefaRota(String observacao, Timestamp data_inicio, Timestamp data_fim, Integer id_rota) {
+    public TarefaRota(String observacao, Timestamp dataInicio, Timestamp dataFim, Rota rotaId) {
         this.observacao = observacao;
-        this.data_inicio = data_inicio;
-        this.data_fim = data_fim;
-        this.id_rota = id_rota;
+        this.data_inicio = dataInicio;
+        this.data_fim = dataFim;
+        this.rotaId = rotaId;
     }
-    
-    public TarefaRota(Integer id, String observacao, Timestamp data_inicio, Timestamp data_fim, Integer id_rota) {
-    	this.observacao = observacao;
-        this.data_inicio = data_inicio;
-        this.data_fim = data_fim;
-        this.id_rota = id_rota;
+
+    public TarefaRota(Integer id, String observacao, Timestamp dataInicio, Timestamp dataFim, Rota rotaId) {
+        this.observacao = observacao;
+        this.data_inicio = dataInicio;
+        this.data_fim = dataFim;
+        this.rotaId = rotaId;
         super.setId(id);
     }
 
     public String getObservacao() {
         return observacao;
     }
-
+    
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-    
+
     public Timestamp getDataInicio() {
         return data_inicio;
     }
@@ -47,23 +47,23 @@ public class TarefaRota extends GenericModel{
     public Timestamp getDataFim() {
         return data_fim;
     }
-
+    
     public void setDataFim(Timestamp data_fim) {
         this.data_fim = data_fim;
     }
 
-    public int getIdRota() {
-    	return id_rota;
+    public int getRotaId() {
+        return rotaId.getId();
     }
     
     @Override
     public String toString() {
         return "TarefaRota {" +
                 "id='" + this.getId() + "\'" +
-                ", observacao='" + observacao + "\'" +
-                ", data_inicio='" + data_inicio + "\'" +
-                ", data_fim='" + data_fim + "\'" +
-                ", id_rota='" + rotaDAO.selectRota(id_rota) + "\'" +
+                ", observacao='" + getObservacao() + "\'" +
+                ", data_inicio='" + getDataInicio() + "\'" +
+                ", data_fim='" + getDataFim() + "\'" +
+                ", id_rota='" + getRotaId() + "\'" +
                 '}';
     }
 	

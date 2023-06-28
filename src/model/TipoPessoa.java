@@ -3,8 +3,8 @@ package model;
 public class TipoPessoa extends GenericModel{
 	
 	private String descricao;
-	
-	public TipoPessoa(String descricao) {
+
+    public TipoPessoa(String descricao) {
         this.descricao = descricao;
     }
 
@@ -14,11 +14,7 @@ public class TipoPessoa extends GenericModel{
     }
 
     public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        return this.descricao;
     }
 
     @Override

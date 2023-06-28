@@ -2,13 +2,12 @@ package model;
 
 public class TipoFase extends GenericModel {
 	
-    private String descricao;
+	private String descricao;
 
     public TipoFase(String descricao) {
         this.descricao = descricao;
     }
-
-    public TipoFase(Integer id, String descricao) {
+    public TipoFase(int id, String descricao) {
         this.descricao = descricao;
         super.setId(id);
     }

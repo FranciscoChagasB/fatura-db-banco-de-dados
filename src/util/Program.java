@@ -12,10 +12,10 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		TipoFase tipoFase = new TipoFase("Teste");
+		TipoFase tipoFase = new TipoFase("Teste 3");
 		
-		tipoFase = tipoFaseDAO.selectTipoFase(2);
-        System.out.println(tipoFase);
+		tipoFase = tipoFaseDAO.selectTipoFaseById(1);
+        System.out.println(tipoFase.getDescricao());
 
 	}
 

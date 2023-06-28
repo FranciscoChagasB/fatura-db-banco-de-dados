@@ -49,10 +49,10 @@ public class MedicaoDAO extends  ConexaoDB{
                 String ano = rs.getString("ano");
                 Timestamp data_medicao = rs.getTimestamp("data_medicao");
                 String consumo = rs.getString("consumo");
-                int medidor_id = rs.getInt("medidor_id");
+                int medidor_id = rs.getInt("id_medidor");
                 Medidor medidor = medidorDAO.selectMedidorById(medidor_id);
-                int time_rota_id = rs.getInt("time_rota_id");
-                TimeRota time_rota = timeRotaDAO.selectTimeRota(time_rota_id);
+                int time_rota_id = rs.getInt("id_time_rota");
+                TimeRota time_rota = timeRotaDAO.selectTimeRotaById(time_rota_id);
                 entidade = new Medicao(id, mes, ano, data_medicao, consumo, medidor, time_rota);
             }
         } catch (SQLException e) {
@@ -74,10 +74,10 @@ public class MedicaoDAO extends  ConexaoDB{
                 String ano = rs.getString("ano");
                 Timestamp data_medicao = rs.getTimestamp("data_medicao");
                 String consumo = rs.getString("consumo");
-                int medidor_id = rs.getInt("medidor_id");
+                int medidor_id = rs.getInt("id_medidor");
                 Medidor medidor = medidorDAO.selectMedidorById(medidor_id);
-                int time_rota_id = rs.getInt("time_rota_id");
-                TimeRota time_rota = timeRotaDAO.selectTimeRota(time_rota_id);
+                int time_rota_id = rs.getInt("id_time_rota");
+                TimeRota time_rota = timeRotaDAO.selectTimeRotaById(time_rota_id);
                 entidades.add(new Medicao(id, mes, ano, data_medicao, consumo, medidor, time_rota));
             }
         } catch (SQLException e) {

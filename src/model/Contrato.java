@@ -1,34 +1,32 @@
 package model;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Contrato extends GenericModel {
-    private String descricao;
-    private Date data_inicio;
-    private Date data_criacao;
-    private Integer id_medidor;
-    private Integer id_classe;
-    private Integer id_cliente;
+	
+	private String descricao;
+    private Timestamp data_inicio;
+    private Timestamp data_criacao;
+    private Medidor medidorId;
+    private Classe classeId;
+    private Cliente clienteId;
 
-    public Contrato(String descricao, Date data_inicio, Date data_criacao, Integer id_medidor,
-                    Integer id_classe, Integer id_cliente) {
+    public Contrato(String descricao, Timestamp dataInicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
         this.descricao = descricao;
-        this.data_inicio = data_inicio;
-        this.data_criacao = data_criacao;
-        this.id_medidor = id_medidor;
-        this.id_classe = id_classe;
-        this.id_cliente = id_cliente;
+        this.data_inicio = dataInicio;
+        this.data_criacao = dataCriacao;
+        this.medidorId = medidorId;
+        this.classeId = classeId;
+        this.clienteId = clienteId;
     }
-    
-    public Contrato(Integer id, String descricao, Date data_inicio, Date data_criacao, Integer id_medidor,
-    		Integer id_classe, Integer id_cliente) {
-    	this.descricao = descricao;
-    	this.data_inicio = data_inicio;
-    	this.data_criacao = data_criacao;
-    	this.id_medidor = id_medidor;
-    	this.id_classe = id_classe;
-    	this.id_cliente = id_cliente;
-    	super.setId(id);
+    public Contrato(int id, String descricao, Timestamp dataInicio, Timestamp dataCriacao, Medidor medidorId, Classe classeId, Cliente clienteId) {
+        this.descricao = descricao;
+        this.data_inicio = dataInicio;
+        this.data_criacao = dataCriacao;
+        this.medidorId = medidorId;
+        this.classeId = classeId;
+        this.clienteId = clienteId;
+        super.setId(id);
     }
 
     public String getDescricao() {
@@ -39,56 +37,44 @@ public class Contrato extends GenericModel {
         this.descricao = descricao;
     }
 
-    public Date getDataInicio() {
+    public Timestamp getDataInicio() {
         return data_inicio;
     }
 
-    public void setDataInicio(Date data_inicio) {
-        this.data_inicio = data_inicio;
+    public void setDataInicio(Timestamp dataInicio) {
+        this.data_inicio = dataInicio;
     }
 
-    public Date getDataCriacao() {
+    public Timestamp getDataCriacao() {
         return data_criacao;
     }
 
-    public void setDataCriacao(Date data_criacao) {
-        this.data_criacao = data_criacao;
+    public void setDataCriacao(Timestamp dataCriacao) {
+        this.data_criacao = dataCriacao;
     }
 
-    public Integer getIdMedidor() {
-        return id_medidor;
+    public int getMedidorId() {
+        return medidorId.getId();
     }
 
-    public void setIdMedidor(Integer id_medidor) {
-        this.id_medidor = id_medidor;
+    public int getClasseId() {
+        return classeId.getId();
     }
 
-    public Integer getIdClasse() {
-        return id_classe;
-    }
-
-    public void setIdClasse(Integer id_classe) {
-        this.id_classe = id_classe;
-    }
-
-    public Integer getIdCliente() {
-        return id_cliente;
-    }
-
-    public void setIdCliente(Integer id_cliente) {
-        this.id_cliente = id_cliente;
+    public int getClienteId() {
+        return clienteId.getId();
     }
 
     @Override
     public String toString() {
         return "Contrato{" +
                 "id='" + this.getId() + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", data_inicio='" + data_inicio + '\'' +
-                ", data_criacao='" + data_criacao + '\'' +
-                ", id_medidor='" + id_medidor + '\'' +
-                ", id_classe='" + id_classe + '\'' +
-                ", id_cliente='" + id_cliente + '\'' +
+                ", descricao='" + getDescricao() + '\'' +
+                ", data_inicio='" + getDataInicio() + '\'' +
+                ", data_criacao='" + getDataCriacao() + '\'' +
+                ", id_medidor='" + getMedidorId() + '\'' +
+                ", id_classe='" + getClasseId() + '\'' +
+                ", id_cliente='" + getClienteId() + '\'' +
                 '}';
     }
 }

@@ -12,21 +12,20 @@ import java.util.List;
 
 public class TarefaRotaDAO extends ConexaoDB{
 
-    private static final String INSERT_TAREFA_ROTA_SQL = "INSERT INTO tarefa_rota (observacao, data_inicio, data_fim, tarefa_rotcao, id_rota) VALUES (?, ?, ?, ?, ?) ;";
-    private static final String SELECT_TAREFA_ROTA_BY_ID = "SELECT id, observacao, data_inicio, data_fim, tarefa_rotcao, id_rota FROM tarefa_rota WHERE id = ?";
+    private static final String INSERT_TAREFA_ROTA_SQL = "INSERT INTO tarefa_rota (observacao, data_inicio, data_fim, id_rota) VALUES (?, ?, ?, ?) ;";
+    private static final String SELECT_TAREFA_ROTA_BY_ID = "SELECT id, observacao, data_inicio, data_fim, id_rota FROM tarefa_rota WHERE id = ?";
     private static final String SELECT_ALL_TAREFA_ROTA = "SELECT * FROM tarefa_rota;";
     private static final String DELETE_TAREFA_ROTA_SQL = "DELETE FROM tarefa_rota WHERE id = ?;";
-    private static final String UPDATE_TAREFA_ROTA_SQL = "UPDATE tarefa_rota SET observacao = ?,  data_inicio = ?, data_fim = ?,  tarefa_rotcao = ?, id_rota = ? WHERE id = ?;";
+    private static final String UPDATE_TAREFA_ROTA_SQL = "UPDATE tarefa_rota SET observacao = ?,  data_inicio = ?, data_fim = ?, id_rota = ? WHERE id = ?;";
 
     private RotaDAO rotaDAO = new RotaDAO();
 
     public void insertTarefaRota(TarefaRota entidade) {
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_TAREFA_ROTA_SQL)) {
-            preparedStatement.setString(1, entidade.getObervacao());
+            preparedStatement.setString(1, entidade.getObservacao());
             preparedStatement.setTimestamp(2, entidade.getDataInicio());
-            preparedStatement.setTimestamp(3, entidade.getDataFinal());
-            preparedStatement.setString(4, entidade.getTarefaRotcao());
-            preparedStatement.setInt(5, entidade.getRotaId());
+            preparedStatement.setTimestamp(3, entidade.getDataFim());
+            preparedStatement.setInt(4, entidade.getRotaId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -46,11 +45,10 @@ public class TarefaRotaDAO extends ConexaoDB{
                 String obervacao = rs.getString("observacao");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataFim = rs.getTimestamp("data_fim");
-                String tarefaRotcao = rs.getString("tarefa_rotcao");
-                int rotaId = rs.getInt("rota_id");
-                Rota rota = rotaDAO.selectRota(rotaId);
+                int rotaId = rs.getInt("id_rota");
+                Rota rota = rotaDAO.selectRotaById(rotaId);
 
-                entidade = new TarefaRota(id, obervacao, dataInicio, dataFim, tarefaRotcao, rota );
+                entidade = new TarefaRota(id, obervacao, dataInicio, dataFim, rota);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -70,12 +68,11 @@ public class TarefaRotaDAO extends ConexaoDB{
                 String obervacao = rs.getString("observacao");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataFim = rs.getTimestamp("data_fim");
-                String tarefaRotcao = rs.getString("tarefa_rotcao");
-                int rotaId = rs.getInt("rota_id");
-                Rota rota = rotaDAO.selectRota(rotaId);
+                int rotaId = rs.getInt("id_rota");
+                Rota rota = rotaDAO.selectRotaById(rotaId);
 
 
-                entidades.add(new TarefaRota(id, obervacao, dataInicio, dataFim, tarefaRotcao, rota ));
+                entidades.add(new TarefaRota(id, obervacao, dataInicio, dataFim, rota));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -97,12 +94,11 @@ public class TarefaRotaDAO extends ConexaoDB{
     public boolean updateTarefaRota(TarefaRota entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_TAREFA_ROTA_SQL)) {
 
-            statement.setString(1, entidade.getObervacao());
+            statement.setString(1, entidade.getObservacao());
             statement.setTimestamp(2, entidade.getDataInicio());
-            statement.setTimestamp(3, entidade.getDataFinal());
-            statement.setString(4, entidade.getTarefaRotcao());
-            statement.setInt(5, entidade.getRotaId());
-            statement.setInt(6, entidade.getId());
+            statement.setTimestamp(3, entidade.getDataFim());
+            statement.setInt(4, entidade.getRotaId());
+            statement.setInt(5, entidade.getId());
 
 
             return statement.executeUpdate() > 0;

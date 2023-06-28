@@ -42,9 +42,9 @@ public class MedidorDAO extends  ConexaoDB{
 
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
-                Integer rota_id = rs.getInt("rota_id");
-                Rota rota = rotaDAO.selectRota(rota_id);
-                Integer poste_id = rs.getInt("poste_id");
+                Integer rota_id = rs.getInt("id_rota");
+                Rota rota = rotaDAO.selectRotaById(rota_id);
+                Integer poste_id = rs.getInt("id_poste");
                 Poste poste = posteDAO.selectPosteById(rota_id);
                 entidade = new Medidor(id, descricao, rota, poste);
             }
@@ -64,9 +64,9 @@ public class MedidorDAO extends  ConexaoDB{
             while (rs.next()) {
                 Integer id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Integer rota_id = rs.getInt("rota_id");
-                Rota rota = rotaDAO.selectRota(rota_id);
-                Integer poste_id = rs.getInt("poste_id");
+                Integer rota_id = rs.getInt("id_rota");
+                Rota rota = rotaDAO.selectRotaById(rota_id);
+                Integer poste_id = rs.getInt("id_poste");
                 Poste poste = posteDAO.selectPosteById(rota_id);
                 entidades.add(new Medidor(id, descricao, rota, poste));
             }

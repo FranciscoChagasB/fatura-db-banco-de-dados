@@ -42,11 +42,11 @@ public class TimeRotaDAO extends ConexaoDB{
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Integer funcionarioId = rs.getInt("funcionario_id");
-                Funcionario funcionario = funcionarioDAO.selectFuncionario(funcionarioId);
-                Integer tarefaRotaId = rs.getInt("tarefa_rota_id");
-                TarefaRota tarefa_rota = tarefarotaDAO.selectTarefaRota(tarefaRotaId);
-                entidade = new TimeRota(id, funcionario, tarefa_rota );
+                Integer funcionarioId = rs.getInt("id_funcionario");
+                Funcionario funcionario = funcionarioDAO.selectFuncionarioById(funcionarioId);
+                Integer tarefaRotaId = rs.getInt("id_tarefa_rota");
+                TarefaRota tarefa_rota = tarefarotaDAO.selectTarefaRotaById(tarefaRotaId);
+                entidade = new TimeRota(id, funcionario, tarefa_rota);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -63,11 +63,11 @@ public class TimeRotaDAO extends ConexaoDB{
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                Integer funcionarioId = rs.getInt("funcionario_id");
-                Funcionario funcionario = funcionarioDAO.selectFuncionario(funcionarioId);
-                Integer tarefaRotaId = rs.getInt("tarefa_rota_id");
-                TarefaRota tarefa_rota = tarefarotaDAO.selectTarefaRota(tarefaRotaId);
-                entidades.add( new TimeRota(id, funcionario, tarefa_rota ));
+                Integer funcionarioId = rs.getInt("id_funcionario");
+                Funcionario funcionario = funcionarioDAO.selectFuncionarioById(funcionarioId);
+                Integer tarefaRotaId = rs.getInt("id_tarefa_rota");
+                TarefaRota tarefa_rota = tarefarotaDAO.selectTarefaRotaById(tarefaRotaId);
+                entidades.add(new TimeRota(id, funcionario, tarefa_rota ));
             }
         } catch (SQLException e) {
             printSQLException(e);

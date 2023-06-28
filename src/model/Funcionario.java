@@ -3,40 +3,40 @@ package model;
 import DAO.PessoaDAO;
 
 public class Funcionario extends GenericModel {
-    private String codigo_funcional;
-    private Integer id_pessoa;
-    
-    static PessoaDAO pessoaDAO = new PessoaDAO();
+	
+	private String codigo_funcionario;
+    private Pessoa pessoaId;
 
-    public Funcionario(String codigo_funcional, Integer id_pessoa) {
-        this.codigo_funcional = codigo_funcional;
-        this.id_pessoa = id_pessoa;
+    private PessoaDAO pessoaDAO = new PessoaDAO();
+
+    public Funcionario(String codigoFuncionario, Pessoa pessoaId) {
+        this.codigo_funcionario = codigoFuncionario;
+        this.pessoaId = pessoaId;
     }
-    
-    public Funcionario(Integer id, String codigo_funcional, Integer id_pessoa) {
-        this.codigo_funcional = codigo_funcional;
-        this.id_pessoa = id_pessoa;
+    public Funcionario(int id, String codigoFuncionario, Pessoa pessoaId) {
+        this.codigo_funcionario = codigoFuncionario;
+        this.pessoaId = pessoaId;
         super.setId(id);
     }
 
-    public String getCodigoFuncional() {
-        return codigo_funcional;
+    public String getCodigoFuncionario() {
+        return codigo_funcionario;
     }
 
-    public void setCodigoFuncional(String codigo_funcional) {
-        this.codigo_funcional = codigo_funcional;
+    public void setCodigoFuncionario(String codigoFuncionario) {
+        this.codigo_funcionario = codigoFuncionario;
     }
 
-    public Integer getIdPessoa() {
-        return id_pessoa;
+    public int getPessoaId() {
+        return pessoaId.getId();
     }
 
     @Override
     public String toString() {
         return "Funcionario{" +
                 "id='" + this.getId() + '\'' +
-                ", codigo_funcional='" + codigo_funcional + '\'' +
-                ", id_pessoa='" + pessoaDAO.selectPessoa(id_pessoa) + '\'' +
+                ", codigo_funcionario='" + getCodigoFuncionario() + '\'' +
+                ", id_pessoa='" + getPessoaId() + '\'' +
                 '}';
     }
 }

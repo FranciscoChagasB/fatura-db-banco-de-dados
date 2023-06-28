@@ -1,18 +1,18 @@
 package model;
 
 public class Classe extends GenericModel {
-    private String descricao;
-    private TipoFase id_tipo_fase;
-    
+	
+	private String descricao;
+    private TipoFase tipoFaseId;
 
-    public Classe(String descricao, TipoFase id_tipo_fase) {
+    public Classe(String descricao, TipoFase tipoFaseId) {
         this.descricao = descricao;
-        this.id_tipo_fase = id_tipo_fase;
+        this.tipoFaseId = tipoFaseId;
     }
     
-    public Classe(Integer id, String descricao, TipoFase id_tipo_fase) {
+    public Classe(Integer id, String descricao, TipoFase tipoFaseId){
         this.descricao = descricao;
-        this.id_tipo_fase = id_tipo_fase;
+        this.tipoFaseId = tipoFaseId;
         super.setId(id);
     }
 
@@ -24,16 +24,16 @@ public class Classe extends GenericModel {
         this.descricao = descricao;
     }
 
-    public int getIdTipoFase() {
-    	return id_tipo_fase.getId();
+    public int getTipoFaseId() {
+        return tipoFaseId.getId();
     }
-    
+
     @Override
     public String toString() {
         return "Classe {" +
                 "id='" + this.getId() + "\'" +
                 ", descricao='" + getDescricao() + "\'" +
-                ", id_tipo_fase='" + getIdTipoFase() + "\'" +
+                ", id_tipo_fase='" + getTipoFaseId() + "\'" +
                 '}';
     }
 }

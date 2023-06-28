@@ -47,11 +47,11 @@ public class ContratoDAO extends ConexaoDB{
                 String descricao = rs.getString("descricao");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataCriacao = rs.getTimestamp("data_criacao");
-                Integer medidorId = rs.getInt("medidor_id");
+                Integer medidorId = rs.getInt("id_medidor");
                 Medidor medidor = medidorDAO.selectMedidorById(medidorId);
-                Integer classeId = rs.getInt("class_id");
+                Integer classeId = rs.getInt("id_classe");
                 Classe classe = classeDAO.selectClasseById(classeId);
-                Integer clienteId = rs.getInt("cliente_id");
+                Integer clienteId = rs.getInt("id_cliente");
                 Cliente cliente = clienteDAO.selectClienteById(clienteId);
 
                 entidade = new Contrato(id, descricao, dataInicio, dataCriacao, medidor, classe, cliente);
@@ -74,11 +74,11 @@ public class ContratoDAO extends ConexaoDB{
                 String descricao = rs.getString("descricao");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataCriacao = rs.getTimestamp("data_criacao");
-                Integer medidorId = rs.getInt("medidor_id");
+                Integer medidorId = rs.getInt("id_medidor");
                 Medidor medidor = medidorDAO.selectMedidorById(medidorId);
-                Integer classeId = rs.getInt("classe_id");
+                Integer classeId = rs.getInt("id_classe");
                 Classe classe = classeDAO.selectClasseById(classeId);
-                Integer clienteId = rs.getInt("cliente_id");
+                Integer clienteId = rs.getInt("id_cliente");
                 Cliente cliente = clienteDAO.selectClienteById(clienteId);
 
                 entidades.add(new Contrato(id, descricao, dataInicio, dataCriacao, medidor, classe, cliente));
